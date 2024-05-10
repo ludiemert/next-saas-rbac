@@ -8,6 +8,8 @@
     "node.js"
   ],
   "devDependencies": {
-    "@rocketseat/eslint-config": "^2.2.2"
+    "@rocketseat/eslint-config": "^2.2.2",
+    "@saas/prettier": "workspace:*"
+
   }
 }
