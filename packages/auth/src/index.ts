@@ -1,6 +1,7 @@
-import { AbilityBuilder, createMongoAbility, ForcedSubject, CreateAbility, MongoAbility } from '@casl/ability';
+import { AbilityBuilder, createMongoAbility, ForcedSubject, CreateAbility, MongoAbility } from '@casl/ability'
 
-const actions = ['manage', 'invite', 'delete'] as const;
+
+const actions = ['manage', 'invite', 'delete'] as const; //manage permite todas as permissoes
 const subjects = ['User', 'all'] as const;
 type AppAbilities = [
   typeof actions[number],
