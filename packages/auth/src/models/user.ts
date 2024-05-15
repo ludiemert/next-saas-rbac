@@ -1,3 +1,5 @@
+import { Role } from "../roles"
+
 export type User = {
-  role: 'ADMIN' | 'MEMBER'
+  role: Role
 }
