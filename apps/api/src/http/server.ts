@@ -7,6 +7,9 @@ import {
   validatorCompiler,
   ZodTypeProvider,
 } from 'fastify-type-provider-zod'
+import { createAccount } from './routes/auth/create-account'
+//import { createAccount } from './auth/create-account'
+
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -15,7 +18,7 @@ app.setValidatorCompiler(validatorCompiler)
 
 app.register(fastifyCors)
 
-app.register(fastifyCors)
+app.register(createAccount)
 
 app.listen({ port: 3333 }).then(() => {
   console.log('SAAS  😎 Http server runinng!!!!')
