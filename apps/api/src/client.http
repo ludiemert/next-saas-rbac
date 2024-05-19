@@ -1,0 +1,10 @@
+POST http POST :3333/users
+Content-Type: application/json
+{
+ "name": "Lu",
+  "email": "lu@gmail.com",
+  "password": "123456"
+}
+ 
+
+

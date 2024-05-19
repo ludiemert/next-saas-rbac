@@ -3,8 +3,8 @@
   "include": ["src/**/*"],
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["./srs/*"]
-    }
-  }
+   "paths": {
+    "@/*": ["./srs/*"]
+   }
+ }
 }
