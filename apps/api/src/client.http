@@ -7,3 +7,6 @@ Content-Type: application/json
   "password": "234567"
 }
 
+### Obter Todos os Usuários
+GET http://localhost:3333/users
+Content-Type: application/json
