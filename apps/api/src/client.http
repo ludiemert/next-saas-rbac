@@ -1,3 +1,4 @@
+### Cadastro de user
 POST http://localhost:3333/users
 Content-Type: application/json
 
@@ -6,6 +7,17 @@ Content-Type: application/json
   "email": "lua@gmail.com",
   "password": "234567"
 }
+
+###
+POST http://localhost:3333/users
+Content-Type: application/json
+
+{
+  "name": "Diego",
+  "email": "lua@acme.com",
+  "password": "123456"
+}
+
 
 ### Obter Todos os Usuários
 GET http://localhost:3333/users

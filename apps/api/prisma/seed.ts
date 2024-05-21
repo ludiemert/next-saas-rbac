@@ -45,6 +45,7 @@ async function seed() {
       name: 'Acme Inc (Member)',
       slug: 'acme-member',
       avatarUrl: faker.image.avatarGitHub(),
+      shouldAttachUsersByDomain: true,
       ownerId: user.id,
       projects: {
         createMany: {
