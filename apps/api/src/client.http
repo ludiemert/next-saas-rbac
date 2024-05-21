@@ -18,6 +18,27 @@ Content-Type: application/json
   "password": "123456"
 }
 
+### teste com a rota authenticate-with-password
+POST http://localhost:3333/sessions/password
+Content-Type: application/json
+
+{
+  "name": "Diego",
+  "email": "lua@acme.com",
+  "password": "123456"
+}
+
+
+### teste com a rota authenticate-with-password senha errada
+POST http://localhost:3333/sessions/password
+Content-Type: application/json
+
+{
+  "name": "Diego",
+  "email": "lua@acme.com",
+  "password": "123457"
+}
+
 
 ### Obter Todos os Usuários
 GET http://localhost:3333/users

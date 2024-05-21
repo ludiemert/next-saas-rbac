@@ -1,5 +1,6 @@
 import fastifyCors from '@fastify/cors'
 import fastifySwagger from '@fastify/swagger'
+import fastifyJwt from '@fastify/jwt'
 import fastifySwaggerUI from '@fastify/swagger-ui'
 import { fastify } from 'fastify'
 
@@ -38,6 +39,10 @@ app.register(fastifySwaggerUI, {
   routePrefix: '/docs',
 })
 
+
+app.register(fastifyJwt, {
+  secret: 'my-jwt-secret',
+})
 
 
 app.register(fastifyCors)
