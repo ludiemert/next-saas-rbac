@@ -11,6 +11,7 @@ import {
 } from 'fastify-type-provider-zod'
 //import { createAccount } from './auth/create-account'
 import { createAccount } from './routes/auth/create-account'
+import { authenticateWithPassword } from './routes/auth/authenticate-with-password'
 //import { createAccount } from './auth/create-account'
 
 
@@ -42,6 +43,7 @@ app.register(fastifySwaggerUI, {
 app.register(fastifyCors)
 
 app.register(createAccount)
+app.register(authenticateWithPassword)
 
 app.listen({ port: 3333 }).then(() => {
   console.log('SAAS  😎 Http server runinng!!!!')
