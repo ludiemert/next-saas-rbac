@@ -13,6 +13,7 @@ import {
 //import { createAccount } from './auth/create-account'
 import { createAccount } from './routes/auth/create-account'
 import { authenticateWithPassword } from './routes/auth/authenticate-with-password'
+import { getProfile } from './routes/auth/get-profile'
 //import { createAccount } from './auth/create-account'
 
 
@@ -49,6 +50,7 @@ app.register(fastifyCors)
 
 app.register(createAccount)
 app.register(authenticateWithPassword)
+app.register(getProfile)
 
 app.listen({ port: 3333 }).then(() => {
   console.log('SAAS  😎 Http server runinng!!!!')

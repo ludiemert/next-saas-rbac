@@ -43,3 +43,9 @@ Content-Type: application/json
 ### Obter Todos os Usuários
 GET http://localhost:3333/users
 Content-Type: application/json
+
+
+### GET para a rota Profile
+GET http://localhost:3333/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzllNmFiNS02OWQ4LTRlMzQtOWY5Ny00YzM3NzdjYjE2MGYiLCJpYXQiOjE3MTYzMzc2MzEsImV4cCI6MTcxNzIwMTYzMX0.wOTqRj_OVooew-vX-_C-gsT0gjmHKpPejy9IMlWED4U
+Content-Type: application/json
