@@ -5,13 +5,17 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint"
-
   },
   "devDependencies": {
+    "@types/node": "^20.12.11",
     "turbo": "latest"
   },
   "packageManager": "pnpm@8.9.0",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@t3-oss/env-nextjs": "^0.10.1",
+    "zod": "^3.0.0"
   }
 }

@@ -3,8 +3,11 @@ import { fastifyPlugin } from "fastify-plugin";
 
 import { UnauthorizedError } from "../routes/_errors/unauthorized-error";
 
+
 export const auth = fastifyPlugin(async(app: FastifyInstance) => {
-  app.addHook('preHandler', async (request) => {
+  app.addHook('preHandler', async (request) => {    
+    console.log(request.headers)
+
     request.getCurrentUserId = async () => {
       try {
         const { sub } = await request.jwtVerify<{ sub: string}>()
