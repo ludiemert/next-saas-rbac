@@ -17,9 +17,12 @@ import { getProfile } from './routes/auth/get-profile'
 import { errorHandler } from './error-handler'
 import { requestPasswordRecover } from './routes/auth/request-password-recover'
 import { resetPassword } from './routes/auth/reset-password'
+<<<<<<< HEAD
 import { authenticateWithGithub } from './routes/auth/authenticate-with-github'
 import { env } from '@saas/env'
 import { createOrganization } from './routes/orgs/create-organization'
+=======
+>>>>>>> a06437ddcc46baac3e3dadc1cb196657bce30b5a
 //import { createAccount } from './auth/create-account'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
