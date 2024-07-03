@@ -1,30 +1,24 @@
-import  { FastifyInstance } from "fastify";
+import { FastifyInstance } from "fastify";
 import { fastifyPlugin } from "fastify-plugin";
 
 import { UnauthorizedError } from "../routes/_errors/unauthorized-error";
 import { prisma } from "src/lib/prisma";
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 2ad20ea1129be1f9076a5115def4f6a3884f008a
-
-export const auth = fastifyPlugin(async(app: FastifyInstance) => {
-  app.addHook('preHandler', async (request) => {    
-    console.log(request.headers)
+export const auth = fastifyPlugin(async (app: FastifyInstance) => {
+  app.addHook('preHandler', async (request) => {
+    console.log(request.headers);
 
     request.getCurrentUserId = async () => {
       try {
-        const { sub } = await request.jwtVerify<{ sub: string}>()
-        return sub
+        const { sub } = await request.jwtVerify<{ sub: string }>();
+        return sub;
       } catch {
-        throw new UnauthorizedError('Invalid auth token')
+        throw new UnauthorizedError('Invalid auth token');
       }
-
-    }
+    };
 
     request.getUserMembership = async (slug: string) => {
-      const userId = await request.getCurrentUserId()
+      const userId = await request.getCurrentUserId();
 
       const member = await prisma.member.findFirst({
         where: {
@@ -36,18 +30,18 @@ export const auth = fastifyPlugin(async(app: FastifyInstance) => {
         include: {
           organization: true,
         },
-      })
+      });
 
       if (!member) {
-        throw new UnauthorizedError(`You're not a member of this organization...`)
+        throw new UnauthorizedError(`You're not a member of this organization...`);
       }
 
-      const { organization, ...membership } = member
+      const { organization, ...membership } = member;
 
       return {
-        organization, 
+        organization,
         membership,
-      }
-    }
-  })
-})
+      };
+    };
+  });
+});
