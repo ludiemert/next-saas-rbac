@@ -57,5 +57,16 @@ Content-Type: application/json
 
 ### GET para a rota Profile - consulta user com ID
 GET http://localhost:3333/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMzllNmFiNS02OWQ4LTRlMzQtOWY5Ny00YzM3NzdjYjE2MGYiLCJpYXQiOjE3MTYzMzc2MzEsImV4cCI6MTcxNzIwMTYzMX0.wOTqRj_OVooew-vX-_C-gsT0gjmHKpPejy9IMlWED4U
+Authorization: Bearer RSNc
 Content-Type: application/json
+
+
+###teste com login de usuario no github
+
+POST https://github.com/login/oauth/authorize?client_id=Ov23lieuyn2jx2qwPNNa&redirect_uri=http://localhost:3000/api/auth/callback&scope=user:email
+Accept: application/json
+{
+  "access_token":"a",
+  "scope":"repo,gist",
+  "token_type":"bearer"
+}
