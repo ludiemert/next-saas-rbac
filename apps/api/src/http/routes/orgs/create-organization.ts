@@ -7,11 +7,7 @@ import { BadRequestError } from "../_errors/bad-request-error";
 import { createSlug } from "src/utils/create-slug";
 
 export async function createOrganization(app: FastifyInstance) {
-<<<<<<< HEAD
   app.withTypeProvider<ZodTypeProvider>().register(auth).post('/organizations', {
-=======
-  app.withTypeProvider<ZodTypeProvider>().register(auth).post('/organization', {
->>>>>>> 2ad20ea1129be1f9076a5115def4f6a3884f008a
     schema: {
       tags: ['organizations'],
       summary: 'Create a new organization',
@@ -28,19 +24,19 @@ export async function createOrganization(app: FastifyInstance) {
       }
     },
   },
-  async (request, reply) =>{
-    const userId = await request.getCurrentUserId()
-    const { name, domain, shouldAttachUsersByDomain } = request.body
+  async (request, reply) => {
+    const userId = await request.getCurrentUserId();
+    const { name, domain, shouldAttachUsersByDomain } = request.body;
 
     if (domain) {
       const organizationByDomain = await prisma.organization.findUnique({
         where: { domain },
-      })
+      });
 
       if (organizationByDomain) {
         throw new BadRequestError(
-          'Another organization with same domain already exists...'
-        )
+          'Another organization with the same domain already exists...'
+        );
       }
     }
 
@@ -49,7 +45,7 @@ export async function createOrganization(app: FastifyInstance) {
         name,
         slug: createSlug(name),
         domain,
-        shouldAttachUsersByDomain, 
+        shouldAttachUsersByDomain,
         ownerId: userId,
         members: {
           create: {
@@ -58,12 +54,10 @@ export async function createOrganization(app: FastifyInstance) {
           },
         },
       },
-    })
+    });
 
     return reply.status(201).send({
       organizationId: organization.id,
-    })
-  },
-
-)
+    });
+  });
 }
