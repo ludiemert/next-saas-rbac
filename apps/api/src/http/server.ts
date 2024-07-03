@@ -17,10 +17,19 @@ import { getProfile } from './routes/auth/get-profile'
 import { errorHandler } from './error-handler'
 import { requestPasswordRecover } from './routes/auth/request-password-recover'
 import { resetPassword } from './routes/auth/reset-password'
+<<<<<<< HEAD
 import { authenticateWithGithub } from './routes/auth/authenticate-with-github'
 import { env } from '@saas/env'
 import { createOrganization } from './routes/orgs/create-organization'
 import { getMembership } from './routes/orgs/get-membership'
+=======
+<<<<<<< HEAD
+import { authenticateWithGithub } from './routes/auth/authenticate-with-github'
+import { env } from '@saas/env'
+import { createOrganization } from './routes/orgs/create-organization'
+=======
+>>>>>>> a06437ddcc46baac3e3dadc1cb196657bce30b5a
+>>>>>>> 003c467440d634b1fe81803bbbe612de112e4290
 //import { createAccount } from './auth/create-account'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
@@ -69,7 +78,10 @@ app.register(requestPasswordRecover)
 app.register(resetPassword)
 
 app.register(createOrganization)
+<<<<<<< HEAD
 app.register(getMembership)
+=======
+>>>>>>> 003c467440d634b1fe81803bbbe612de112e4290
 
 app.listen({ port: env.SERVER_PORT }).then(() => {
   console.log('SAAS  😎 Http server runinng!!!!')
