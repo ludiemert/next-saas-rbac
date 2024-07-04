@@ -7,12 +7,12 @@ import { BadRequestError } from "../_errors/bad-request-error";
 
 import { organizationSchema } from "@saas/auth";
 import { UnauthorizedError } from "../_errors/unauthorized-error";
-import { getUserPermissions } from "src/utils/get-userpermissions";
+import { getUserPermissions } from "src/utils/get-user-permissions";
 
 
 export async function updateOrganization(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().register(auth)
-  .post(
+  .put(
     '/organizations/:slug', {
     schema: {
       tags: ['organizations'],
