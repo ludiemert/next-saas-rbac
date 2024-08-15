@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
 import { ZodTypeProvider } from 'fastify-type-provider-zod'
 
-import { prisma } from 'src/lib/prisma'
+import { prisma } from '@/lib/prisma'
 import { z } from 'zod'
 import { UnauthorizedError } from '../_errors/unauthorized-error'
 import { hash } from 'bcryptjs'
@@ -34,16 +34,24 @@ export async function resetPassword(app: FastifyInstance) {
       }
 
       const passwordHash = await hash(password, 6)
-      await prisma.user.update({
-        where: {
-          id: tokenFromCode.userId,
-        },
-        data: {
-          passwordHash,
-        },
-      })
+
+      await prisma.$transaction([
+        prisma.user.update({
+          where: {
+            id: tokenFromCode.userId,
+          },
+          data: {
+           passwordHash,
+          },
+        }),
+        prisma.token.delete({
+          where: {
+            id: code,
+          },
+        }),      
+      ])
 
       return reply.status(204).send()
-    }
+    },
   )
 }
