@@ -10,10 +10,11 @@
   "devDependencies": {
     "@rocketseat/eslint-config": "^2.2.2",
     "@saas/prettier": "workspace:*"
-
   },
-        "prettier":  "@saas/prettier",
-        "eslintConfig": {
-          "extends": ["./library.js"]
-        }
+  "prettier": "@saas/prettier",
+  "eslintConfig": {
+    "extends": [
+      "./library.js"
+    ]
+  }
 }

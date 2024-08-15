@@ -6,9 +6,8 @@ export const inviteSubject = z.tuple([
   z.union([
     z.literal('manage'),
     z.literal('get'),
-    z.literal('create'),  
+    z.literal('create'),
     z.literal('delete'), //apaga um convite que foi enviado
-    
   ]),
   z.literal('Invite'),
 ])

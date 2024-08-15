@@ -8,40 +8,37 @@ async function seed() {
   await prisma.organization.deleteMany()
   await prisma.user.deleteMany()
 
-
   const passwordHash = await hash('123456', 1)
 
   const user = await await prisma.user.create({
-    data:  {
+    data: {
       name: 'Jhon Doe',
       email: 'jhon@gmail.com',
       avatarUrl: 'http://github.com/diego3g.png',
       passwordHash,
-    }
-    })
+    },
+  })
 
-    const anotherUser = await await prisma.user.create({
-      data:  
-      {
-        name: faker.person.fullName(),
-        email: faker.internet.email(),
-        avatarUrl: faker.image.avatarGitHub(),
-        passwordHash,
-      }
-      })
+  const anotherUser = await await prisma.user.create({
+    data: {
+      name: faker.person.fullName(),
+      email: faker.internet.email(),
+      avatarUrl: faker.image.avatarGitHub(),
+      passwordHash,
+    },
+  })
 
-      const anotherUser2 = await await prisma.user.create({
-        data:     {
-          name: faker.person.fullName(),
-          email: faker.internet.email(),
-          avatarUrl: faker.image.avatarGitHub(),
-          passwordHash,
-    }    
-        })
-
+  const anotherUser2 = await await prisma.user.create({
+    data: {
+      name: faker.person.fullName(),
+      email: faker.internet.email(),
+      avatarUrl: faker.image.avatarGitHub(),
+      passwordHash,
+    },
+  })
 
   await prisma.organization.create({
-    data:{
+    data: {
       name: 'Acme Inc (Member)',
       slug: 'acme-member',
       avatarUrl: faker.image.avatarGitHub(),
@@ -85,7 +82,6 @@ async function seed() {
                 anotherUser2.id,
               ]),
             },
-
           ],
         },
       },
@@ -95,7 +91,6 @@ async function seed() {
             {
               userId: user.id,
               role: 'MEMBER',
-
             },
             {
               userId: anotherUser.id,
@@ -111,9 +106,8 @@ async function seed() {
     },
   })
 
-
   await prisma.organization.create({
-    data:{
+    data: {
       name: 'Acme Inc (Billing)',
       slug: 'acme-billing',
       avatarUrl: faker.image.avatarGitHub(),
@@ -156,7 +150,6 @@ async function seed() {
                 anotherUser2.id,
               ]),
             },
-            
           ],
         },
       },
@@ -166,7 +159,6 @@ async function seed() {
             {
               userId: user.id,
               role: 'BILLING',
-
             },
             {
               userId: anotherUser.id,
@@ -181,9 +173,6 @@ async function seed() {
       },
     },
   })
-
-
-
 }
 
 seed().then(() => {

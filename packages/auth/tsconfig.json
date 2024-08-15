@@ -1,7 +1,7 @@
 {
   "extends": "@saas/tsconfig/library.json",
   "include": ["src/**/*"]
-} 
+}
 
 
 //import { ability } from "../../../packages/auth/src"

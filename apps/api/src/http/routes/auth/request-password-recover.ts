@@ -1,9 +1,8 @@
-import { FastifyInstance } from "fastify";
-import { ZodTypeProvider } from "fastify-type-provider-zod";
+import { FastifyInstance } from 'fastify'
+import { ZodTypeProvider } from 'fastify-type-provider-zod'
 
-import { prisma } from "src/lib/prisma";
-import { z } from "zod";
-
+import { prisma } from 'src/lib/prisma'
+import { z } from 'zod'
 
 export async function requestPasswordRecover(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -11,11 +10,11 @@ export async function requestPasswordRecover(app: FastifyInstance) {
     {
       schema: {
         tags: ['auth'],
-        summary: 'Get authenticated user profile',      
+        summary: 'Get authenticated user profile',
         body: z.object({
           email: z.string().email(),
         }),
-       response: {
+        response: {
           201: z.null(),
         },
       },
@@ -38,13 +37,12 @@ export async function requestPasswordRecover(app: FastifyInstance) {
           userId: userFromEmail.id,
         },
       })
-  
+
       //Send e-mail with password recover link
 
-      console.log('Recover password token:' , code)
-  
+      console.log('Recover password token:', code)
 
       return reply.status(201).send()
-    },
+    }
   )
 }

@@ -1,7 +1,6 @@
-import { defineAbilityFor, type Role, userSchema } from "@saas/auth";
- 
+import { defineAbilityFor, type Role, userSchema } from '@saas/auth'
 
-export function getUserPermissions(userId: string, role: Role){
+export function getUserPermissions(userId: string, role: Role) {
   const authUser = userSchema.parse({
     id: userId,
     role,
@@ -9,5 +8,4 @@ export function getUserPermissions(userId: string, role: Role){
 
   const ability = defineAbilityFor(authUser)
   return ability
-
 }

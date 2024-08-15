@@ -15,28 +15,38 @@
     "@t3-oss/env-core" "0.10.1"
 
 "@types/node@^20.12.11":
-  version "20.12.12"
-  resolved "https://registry.npmjs.org/@types/node/-/node-20.12.12.tgz"
-  integrity sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==
+  version "20.14.15"
+  resolved "https://registry.npmjs.org/@types/node/-/node-20.14.15.tgz"
+  integrity sha512-Fz1xDMCF/B00/tYSVMlmK7hVeLh7jE5f3B7X1/hmV0MJBwE27KlS7EvD/Yp+z1lm8mVhwV5w+n8jOZG8AfTlKw==
   dependencies:
     undici-types "~5.26.4"
 
-turbo-windows-64@1.13.3:
-  version "1.13.3"
-  resolved "https://registry.npmjs.org/turbo-windows-64/-/turbo-windows-64-1.13.3.tgz"
-  integrity sha512-Nudr4bRChfJzBPzEmpVV85VwUYRCGKecwkBFpbp2a4NtrJ3+UP1VZES653ckqCu2FRyRuS0n03v9euMbAvzH+Q==
+prettier-plugin-tailwindcss@^0.6.6:
+  version "0.6.6"
+  resolved "https://registry.npmjs.org/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.6.6.tgz"
+  integrity sha512-OPva5S7WAsPLEsOuOWXATi13QrCKACCiIonFgIR6V4lYv4QLp++UXVhZSzRbZxXGimkQtQT86CC6fQqTOybGng==
+
+prettier@^3.0, prettier@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.npmjs.org/prettier/-/prettier-3.3.3.tgz"
+  integrity sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==
+
+turbo-windows-64@2.0.14:
+  version "2.0.14"
+  resolved "https://registry.npmjs.org/turbo-windows-64/-/turbo-windows-64-2.0.14.tgz"
+  integrity sha512-w9/XwkHSzvLjmioo6cl3S1yRfI6swxsV1j1eJwtl66JM4/pn0H2rBa855R0n7hZnmI6H5ywLt/nLt6Ae8RTDmw==
 
 turbo@latest:
-  version "1.13.3"
-  resolved "https://registry.npmjs.org/turbo/-/turbo-1.13.3.tgz"
-  integrity sha512-n17HJv4F4CpsYTvKzUJhLbyewbXjq1oLCi90i5tW1TiWDz16ML1eDG7wi5dHaKxzh5efIM56SITnuVbMq5dk4g==
+  version "2.0.14"
+  resolved "https://registry.npmjs.org/turbo/-/turbo-2.0.14.tgz"
+  integrity sha512-00JjdCMD/cpsjP0Izkjcm8Oaor5yUCfDwODtaLb+WyblyadkaDEisGhy3Dbd5az9n+5iLSPiUgf+WjPbns6MRg==
   optionalDependencies:
-    turbo-darwin-64 "1.13.3"
-    turbo-darwin-arm64 "1.13.3"
-    turbo-linux-64 "1.13.3"
-    turbo-linux-arm64 "1.13.3"
-    turbo-windows-64 "1.13.3"
-    turbo-windows-arm64 "1.13.3"
+    turbo-darwin-64 "2.0.14"
+    turbo-darwin-arm64 "2.0.14"
+    turbo-linux-64 "2.0.14"
+    turbo-linux-arm64 "2.0.14"
+    turbo-windows-64 "2.0.14"
+    turbo-windows-arm64 "2.0.14"
 
 undici-types@~5.26.4:
   version "5.26.5"

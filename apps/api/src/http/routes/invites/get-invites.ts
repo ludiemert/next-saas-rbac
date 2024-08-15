@@ -6,46 +6,43 @@ import { z } from 'zod'
 
 import { getUserPermissions } from 'src/utils/get-user-permissions'
 import { UnauthorizedError } from '../_errors/unauthorized-error'
+import { roleSchema } from '@saas/auth'
 
-export async function getProjects(app: FastifyInstance) {
+export async function getInvites(app: FastifyInstance) {
   app
     .withTypeProvider<ZodTypeProvider>()
     .register(auth)
     .get(
-      '/organizations/:slug/projects',
+      '/organizations/:slug/invites',
       {
         schema: {
-          tags: ['projects'],
-          summary: 'Get all organization projects',
+          tags: ['invites'],
+          summary: 'Get all organization invites',
           security: [{ bearerAuth: [] }],
           params: z.object({
             slug: z.string(),
-            projectSlug: z.string().uuid(),
           }),
           response: {
-            200: z.object({
-              projects: z.array(
+            201: z.object({
+              invites: z.array(
                 z.object({
                   id: z.string().uuid(),
-                  description: z.string(),
-                  name: z.string(),
-                  slug: z.string(),
-                  avatarUrl: z.string().url().nullable(),
-                  organizationId: z.string().uuid(),
-                  ownerId: z.string().uuid(),
+                  role: roleSchema,
+                  email: z.string().email(),
                   createdAt: z.date(),
-                  owner: z.object({
-                    id: z.string().uuid(),
-                    name: z.string().nullable(),
-                    avatarUrl: z.string().url().nullable(),
-                  }),
+                  author: z
+                    .object({
+                      id: z.string().uuid(),
+                      name: z.string().nullable(),
+                    })
+                    .nullable(),
                 })
               ),
             }),
           },
         },
       },
-      async (request, reply) => {
+      async (request) => {
         const { slug } = request.params
         const userId = await request.getCurrentUserId()
         const { organization, membership } =
@@ -53,39 +50,34 @@ export async function getProjects(app: FastifyInstance) {
 
         const { cannot } = getUserPermissions(userId, membership.role)
 
-        if (cannot('get', 'Project')) {
+        if (cannot('get', 'Invite')) {
           throw new UnauthorizedError(
-            `You're not allowed to see organization projects...`
+            `You're not allowed to get organization invites...`
           )
         }
 
-        const projects = await prisma.project.findMany({
+        const invites = await prisma.invite.findMany({
+          where: {
+            organizationId: organization.id,
+          },
           select: {
             id: true,
-            name: true,
-            description: true,
-            slug: true,
-            ownerId: true,
-            avatarUrl: true,
-            organizationId: true,
+            email: true,
+            role: true,
             createdAt: true,
-            owner: {
+            author: {
               select: {
                 id: true,
                 name: true,
-                avatarUrl: true,
               },
             },
-          },
-          where: {
-            organizationId: organization.id,
           },
           orderBy: {
             createdAt: 'desc',
           },
         })
 
-        return reply.send({ projects })
+        return { invites }
       }
     )
 }
