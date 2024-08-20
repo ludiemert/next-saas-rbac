@@ -1,22 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 
-import "./globals.css";
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Project next-saas-rbac App",
-  description: "Project Trip - FullStack",
-};
+  title: 'Project next-saas-rbac App',
+  description: 'Project Trip - FullStack',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" className="dark">
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
-  );
+  )
 }
