@@ -1,30 +1,14 @@
 'use server'
 
-import ky from 'ky'
-
-const api = ky.create({
-  prefixUrl: 'http://localhost:3333',
-})
+import { signInWithPassword } from '@/http/sign-in-with-password'
 
 export async function signInWithEmailAndPassword(data: FormData) {
-  // Extraindo os valores do FormData
-  const formData = Object.fromEntries(data.entries())
-  const { email, password } = formData
+  const { email, password } = Object.fromEntries(data)
 
-  console.log(formData)
+  const result = await signInWithPassword({
+    email: String(email),
+    password: String(password),
+  })
 
-  try {
-    const result = await api
-      .post('sessions/password', {
-        json: {
-          email,
-          password,
-        },
-      })
-      .json()
-
-    console.log(result)
-  } catch (error) {
-    console.error('Error during sign in:', error)
-  }
+  console.log(result)
 }
