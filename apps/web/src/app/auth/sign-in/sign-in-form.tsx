@@ -5,55 +5,24 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
-
 import { AlertTriangle, Loader2 } from 'lucide-react'
 
 import Image from 'next/image'
 import Link from 'next/link'
-
 import React from 'react'
-import { requestFormReset } from 'react-dom'
 
 import { signInWithEmailAndPassword } from './action'
-import { type FormEvent, useState, useTransition } from 'react'
+
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { useFormState } from '@/hooks/use-form-state'
 
 export function SignInForm() {
-  const [isPending, startTransition] = useTransition()
-
-  const [{ success, message, errors }, setFormState] = useState<{
-    success: boolean
-    message: string | null
-    errors: Record<string, string[]> | null
-  }>({
-    success: false,
-    message: null,
-    errors: null,
-  })
-
-  async function handleSignIn(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-
-    const form = event.currentTarget
-    const data = new FormData(form)
-
-    startTransition(async () => {
-      const state = await signInWithEmailAndPassword(data)
-
-      // Adiciona verificação para garantir que o estado esteja conforme o tipo esperado
-      setFormState({
-        success: state.success,
-        message: state.message,
-        errors: state.errors || null,
-      })
-    })
-
-    //reset form automatic
-    requestFormReset(form)
-  }
+  const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
+    signInWithEmailAndPassword
+  )
 
   return (
-    <form onSubmit={handleSignIn} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
       {success === false && message && (
         <Alert variant="destructive">
           <AlertTriangle className="size-4" />
