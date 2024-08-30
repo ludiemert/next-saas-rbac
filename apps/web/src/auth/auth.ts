@@ -17,8 +17,6 @@ export async function auth() {
     const { user } = await getProfile()
 
     return { user }
-  } catch {
-    cookies().delete('token')
-  }
-  redirect('/auth/sign-in')
+  } catch {}
+  redirect('/api/auth/sign-out')
 }
