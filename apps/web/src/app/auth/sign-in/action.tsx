@@ -38,7 +38,8 @@ export async function signInWithEmailAndPassword(data: FormData) {
     //console.log(token)
     cookies().set('token', token, {
       path: '/',
-      maxAge: (60 * 60) ^ (24 * 7), //7 days
+      maxAge: 60 * 60 * 24 * 7, // 7 dias em segundos
+      //7 days
     })
 
     // Retorna com sucesso, mas sem erros
