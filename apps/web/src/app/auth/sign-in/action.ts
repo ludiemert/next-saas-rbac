@@ -6,7 +6,7 @@ import { signInWithPassword } from '@/http/sign-in-with-password'
 import { HTTPError } from 'ky'
 import { cookies } from 'next/headers'
 
-const sigInSchema = z.object({
+const signInSchema = z.object({
   email: z
     .string()
     .email({ message: 'Please, provide a valid e-mail address...🧐🧐🧐' }),
@@ -16,7 +16,7 @@ const sigInSchema = z.object({
 })
 
 export async function signInWithEmailAndPassword(data: FormData) {
-  const result = sigInSchema.safeParse(Object.fromEntries(data))
+  const result = signInSchema.safeParse(Object.fromEntries(data))
 
   if (!result.success) {
     const errors = result.error.flatten().fieldErrors
