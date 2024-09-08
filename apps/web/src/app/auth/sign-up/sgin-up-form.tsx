@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -8,7 +10,10 @@ import Link from 'next/link'
 import githubIMG from '@/assets/github.svg'
 import { useFormState } from '@/hooks/use-form-state'
 import { useRouter } from 'next/navigation'
-import { signUpAction } from './actions'
+import { signUpAction } from './../sign-up/actions'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { AlertTriangle, Loader2 } from 'lucide-react'
+import { signInWithGithub } from '@/http/sign-in-with-github'
 
 export function SignUpForm() {
   const router = useRouter()
@@ -21,40 +26,86 @@ export function SignUpForm() {
   )
 
   return (
-    <form action="" className="space-y-4">
-      <div className="space-y-1">
-        <Label htmlFor="name">E-mail</Label>
-        <Input name="name" id="name" />
-      </div>
+    <div className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {success === false && message && (
+          <Alert variant="destructive">
+            <AlertTriangle className="size-4" />
+            <AlertTitle>Sign in failed!!!!!😯😯😯😯</AlertTitle>
+            <AlertDescription>
+              <p>{message}</p>
+            </AlertDescription>
+          </Alert>
+        )}
+        <div className="space-y-1">
+          <Label htmlFor="name">Name</Label>
+          <Input name="name" id="name" />
 
-      <div className="space-y-1">
-        <Label htmlFor="password">Password</Label>
-        <Input name="password" type="password" id="password" />
-      </div>
+          {errors?.name && (
+            <p className="text-xs font-medium text-red-600 dark:text-red-500">
+              {errors.name[0]}
+            </p>
+          )}
+        </div>
 
-      <div className="space-y-1">
-        <Label htmlFor="password_confirmation">Password</Label>
-        <Input
-          name="password_confirmation"
-          type="password"
-          id="password_confirmation"
-        />
-      </div>
+        <div className="space-y-1">
+          <Label htmlFor="email">E-mail</Label>
+          <Input name="email" type="email" id="email" />
 
-      <Button type="submit" className="w-full">
-        Create your account
-      </Button>
+          {errors?.email && (
+            <p className="text-xs font-medium text-red-600 dark:text-red-500">
+              {errors.email[0]}
+            </p>
+          )}
+        </div>
 
-      <Button variant="link" className="w-full" size="sm" asChild>
-        <Link href="/auth/sign-in"> Already registered Sign in🥰</Link>
-      </Button>
+        <div className="space-y-1">
+          <Label htmlFor="password">Password</Label>
+          <Input name="password" type="password" id="password" />
+
+          {errors?.password && (
+            <p className="text-xs font-medium text-red-600 dark:text-red-500">
+              {errors.password[0]}
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-1">
+          <Label htmlFor="password_confirmation">Confirm your Password</Label>
+          <Input
+            name="password_confirmation"
+            type="password"
+            id="password_confirmation"
+          />
+
+          {errors?.password_confirmation && (
+            <p className="text-xs font-medium text-red-600 dark:text-red-500">
+              {errors.password_confirmation[0]}
+            </p>
+          )}
+        </div>
+
+        <Button type="submit" className="w-full" disabled={isPending}>
+          {isPending ? (
+            <Loader2 className="size-4 animate-spin" />
+          ) : (
+            '        Create your account'
+          )}
+        </Button>
+
+        <Button variant="link" className="w-full" size="sm" asChild>
+          <Link href="/auth/sign-in"> Already registered Sign in🥰</Link>
+        </Button>
+      </form>
 
       <Separator />
 
-      <Button type="submit" variant="outline" className="w-full">
-        <Image src={githubIMG} className="mr-2 size-4 dark:invert" alt="" />
-        Sign UP😎 with GitHub
-      </Button>
-    </form>
+      <form action={signInWithGithub}>
+        <Button type="submit" variant="outline" className="w-full">
+          <Image src={githubIMG} className="mr-2 size-4 dark:invert" alt="" />
+          Sign UP🥰 with GitHub
+        </Button>
+      </form>
+    </div>
   )
 }

@@ -16,7 +16,7 @@ import { signInWithEmailAndPassword } from './action'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { useFormState } from '@/hooks/use-form-state'
 import { useRouter } from 'next/navigation'
-import { signInWithGithub } from '../sign-up/actions'
+import { signInWithGithub } from '@/http/sign-in-with-github'
 
 export function SignInForm() {
   const router = useRouter()

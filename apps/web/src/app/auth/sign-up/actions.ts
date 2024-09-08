@@ -13,11 +13,9 @@ const signUpSchema = z
     email: z
       .string()
       .email({ message: 'Please, provide a valid e-mail address...🧐🧐🧐' }),
-    password: z
-      .string()
-      .min(6, {
-        message: 'Please, should have at last 6 characters...🤓🤓🤓🤓',
-      }),
+    password: z.string().min(6, {
+      message: 'Please, should have at last 6 characters...🤓🤓🤓🤓',
+    }),
     password_confirmation: z.string(),
   })
   .refine((data) => data.password === data.password_confirmation, {
