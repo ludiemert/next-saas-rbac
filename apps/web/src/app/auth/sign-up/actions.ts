@@ -1,7 +1,4 @@
-'use server'
-
 import { z } from 'zod'
-
 import { HTTPError } from 'ky'
 import { SignUp } from '@/http/sign-up'
 
@@ -14,7 +11,7 @@ const signUpSchema = z
       .string()
       .email({ message: 'Please, provide a valid e-mail address...🧐🧐🧐' }),
     password: z.string().min(6, {
-      message: 'Please, should have at last 6 characters...🤓🤓🤓🤓',
+      message: 'Please, should have at least 6 characters...🤓🤓🤓🤓',
     }),
     password_confirmation: z.string(),
   })
@@ -28,25 +25,28 @@ export async function signUpAction(data: FormData) {
 
   if (!result.success) {
     const errors = result.error.flatten().fieldErrors
-    //console.log(previousState)
-
     return { success: false, message: null, errors, error: null }
   }
 
   const { name, email, password } = result.data
 
-  //promessa que vai resolver depois de 2seg
-  //await new Promise((resolve) => setTimeout(resolve, 2000))
   try {
     await SignUp({
       name,
       email,
       password,
     })
+
+    // Retorna sucesso ao final da operação bem-sucedida
+    return {
+      success: true, // Aqui indicamos que o cadastro foi um sucesso
+      message: 'Account created successfully!',
+      errors: null,
+      error: null,
+    }
   } catch (err) {
     if (err instanceof HTTPError) {
       const { message } = await err.response.json()
-
       return { success: false, message, errors: null, error: null }
     }
 
