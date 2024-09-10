@@ -8,6 +8,8 @@ export function Header() {
       <div className="flex items-center gap-3">
         <Image src={iconIMG} className="size-8 dark:invert" alt="Icon Dog" />
       </div>
+
+      <div className="flex items-center gap-4"></div>
     </div>
   )
 }
