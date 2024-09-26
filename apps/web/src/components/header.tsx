@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import iconIMG from "@/assets/icon.svg";
+import { ProfileButton } from "./profile-button";
 
 export function Header() {
 	return (
@@ -9,7 +10,9 @@ export function Header() {
 				<Image src={iconIMG} className="size-8 dark:invert" alt="Icon Dog" />
 			</div>
 
-			<div className="flex items-center gap-4"></div>
+			<div className="flex items-center gap-4">
+				<ProfileButton />
+			</div>
 		</div>
 	);
 }
