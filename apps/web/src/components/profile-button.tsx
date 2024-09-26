@@ -7,24 +7,43 @@ import {
 	DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import Link from "next/link";
+import { auth } from "@/auth/auth";
 
-export function ProfileButton() {
+//Function to return the initials of the name
+function getInitials(name: string): string {
+	const initials = name
+		.split(" ")
+		.map((word) => word.charAt(0).toUpperCase())
+		.slice(0, 2)
+		.join("");
+
+	return initials;
+}
+
+export async function ProfileButton() {
+	const { user } = await auth();
+
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger className="flex items-center gap-3 outline-none">
 				<div className="flex flex-col items-end">
-					<span className="text-sm font-medium ">Paula Silva</span>
-					<span className="text-xs text-muted-foreground">
-						paulasilva@gmail.com
-					</span>
+					<span className="text-sm font-medium ">{user.name}</span>
+					<span className="text-xs text-muted-foreground">{user.email}</span>
 				</div>
+
 				<Avatar>
-					<AvatarImage
-						src="https://github.com/ludiemert.png"
-						className="size-8 rounded-full object-cover"
-					/>
-					<AvatarFallback>PS</AvatarFallback>
+					{user.avatarUrl && (
+						<AvatarImage
+							src={user.avatarUrl}
+							className="size-8 rounded-full object-cover"
+						/>
+					)}
+
+					{user.name && (
+						<AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+					)}
 				</Avatar>
+
 				<ChevronDown className="size-4 text-muted-foreground" />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end">
