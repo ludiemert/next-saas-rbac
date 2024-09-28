@@ -32,14 +32,16 @@ export async function OrganizationSwitcher() {
 					<DropdownMenuLabel>Organizations</DropdownMenuLabel>
 					{organizations.map((organization) => {
 						return (
-							<DropdownMenuItem key={organization.id}>
-								<Avatar className="mr-2 size-4">
-									{organization.avatarUrl && (
-										<AvatarImage src={organization.avatarUrl} />
-									)}
-									<AvatarFallback />
-								</Avatar>
-								<span className="line-clamp-1">{organization.name}</span>
+							<DropdownMenuItem key={organization.id} asChild>
+								<Link href={`/org/${organization.slug}`}>
+									<Avatar className="mr-2 size-4">
+										{organization.avatarUrl && (
+											<AvatarImage src={organization.avatarUrl} />
+										)}
+										<AvatarFallback />
+									</Avatar>
+									<span className="line-clamp-1">{organization.name}</span>
+								</Link>
 							</DropdownMenuItem>
 						);
 					})}
