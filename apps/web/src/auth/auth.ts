@@ -1,3 +1,4 @@
+import { getMembership } from "@/http/get-membership";
 import { getProfile } from "@/http/get-profile";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -10,6 +11,17 @@ export function isAuthenticated() {
 
 export function getCurrentOrg() {
 	return cookies().get("org")?.value ?? null;
+}
+
+export async function getCurrentMembership() {
+	const org = getCurrentOrg();
+
+	if (!org) {
+		return null;
+	}
+
+	const { membership } = await getMembership(org);
+	return membership;
 }
 
 //busca os dados do usuarios logados  e trazer as permissoes desse usuario
