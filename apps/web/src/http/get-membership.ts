@@ -9,6 +9,7 @@ interface GetMembershipResponse {
 		//	role: "ADMIN" | "MEMBER" | "BILLING";
 		role: Role;
 		organizationId: string;
+		userId: string;
 	};
 }
 
