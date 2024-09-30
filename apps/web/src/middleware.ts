@@ -1,9 +1,19 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
-	//console.log("Helllo");
+	const { pathname } = request.nextUrl;
 
-	return NextResponse.next();
+	const response = NextResponse.next();
+
+	if (pathname.startsWith("/org")) {
+		const [, , slug] = pathname.split("/");
+
+		response.cookies.set("org", slug);
+	} else {
+		response.cookies.delete("org");
+	}
+
+	return response;
 }
 
 export const config = {
