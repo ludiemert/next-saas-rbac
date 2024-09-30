@@ -1,22 +1,31 @@
-import { getProfile } from '@/http/get-profile'
-import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
+import { getProfile } from "@/http/get-profile";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+
+//funcoes de autenticacao
 
 export function isAuthenticated() {
-  return !!cookies().get('token')?.value
+	return !!cookies().get("token")?.value;
 }
 
+export function getCurrentOrg() {
+	return cookies().get("org")?.value ?? null;
+}
+
+//busca os dados do usuarios logados  e trazer as permissoes desse usuario
+export async function ability() {}
+
 export async function auth() {
-  const token = cookies().get('token')?.value
+	const token = cookies().get("token")?.value;
 
-  if (!token) {
-    redirect('/auth/sign-in')
-  }
+	if (!token) {
+		redirect("/auth/sign-in");
+	}
 
-  try {
-    const { user } = await getProfile()
+	try {
+		const { user } = await getProfile();
 
-    return { user }
-  } catch {}
-  redirect('/api/auth/sign-out')
+		return { user };
+	} catch {}
+	redirect("/api/auth/sign-out");
 }
