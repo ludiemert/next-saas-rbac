@@ -7,7 +7,7 @@ import {
 	DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
-export function ThmeSwitcher() {
+export function ThemeSwitcher() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -15,10 +15,12 @@ export function ThmeSwitcher() {
 					<Sun className="size-4" />
 					<span className="sr-only">Toggle theme</span>
 				</Button>
-				<DropdownMenuContent align="end">
-					<DropdownMenuItem></DropdownMenuItem>
-				</DropdownMenuContent>
 			</DropdownMenuTrigger>
+			<DropdownMenuContent align="end">
+				<DropdownMenuItem>Light</DropdownMenuItem>
+				<DropdownMenuItem>Dark</DropdownMenuItem>
+				<DropdownMenuItem>System</DropdownMenuItem>
+			</DropdownMenuContent>
 		</DropdownMenu>
 	);
 }

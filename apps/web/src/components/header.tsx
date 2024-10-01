@@ -6,6 +6,8 @@ import { Slash } from "lucide-react";
 import { OrganizationSwitcher } from "./organization-switcher";
 import { permissions } from "../../../../packages/auth/src/permissions";
 import { ability } from "@/auth/auth";
+import { Separator } from "./ui/separator";
+import { ThemeSwitcher } from "./theme/theme-swticher";
 
 export async function Header() {
 	//permissoes do usuario
@@ -24,6 +26,8 @@ export async function Header() {
 			</div>
 
 			<div className="flex items-center gap-4">
+				<ThemeSwitcher />
+				<Separator orientation="vertical" className="h-5" />
 				<ProfileButton />
 			</div>
 		</div>
