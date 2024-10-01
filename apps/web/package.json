@@ -1,12 +1,13 @@
 {
-  "name": "web",
+  "name": "@saas/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "pnpm env:load next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "env:load": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@prisma/client": "5.14.0",
@@ -16,6 +17,7 @@
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@saas/auth": "workspace:*",
+    "@saas/env": "workspace:*",
     "@swc/helpers": "^0.5.13",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
