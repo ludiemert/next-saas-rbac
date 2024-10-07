@@ -3,12 +3,13 @@ import { isAuthenticated } from "@/auth/auth";
 import { redirect } from "next/navigation";
 
 export default function AppLayout({
-	children,
+	children, sheet,
 }: Readonly<{
 	children: React.ReactNode;
+	sheet: React.ReactNode
 }>) {
 	if (!isAuthenticated()) {
 		redirect("/auth/sign-in");
 	}
-	return <>{children}</>;
+	return <>{children}{sheet}</>;
 }
