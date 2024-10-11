@@ -1,8 +1,9 @@
 //route list organizations
 
 import { roleSchema } from "@saas/auth";
-import { FastifyInstance } from "fastify";
-import { ZodTypeProvider } from "fastify-type-provider-zod";
+import type { FastifyInstance } from "fastify";
+import type { ZodTypeProvider } from "fastify-type-provider-zod";
+
 import { auth } from "src/http/middlewares/auth";
 import { prisma } from "src/lib/prisma";
 import { z } from "zod";

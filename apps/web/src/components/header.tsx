@@ -8,6 +8,7 @@ import { permissions } from "../../../../packages/auth/src/permissions";
 import { ability } from "@/auth/auth";
 import { Separator } from "./ui/separator";
 import { ThemeSwitcher } from "./theme/theme-swticher";
+import { ProjectSwitcher } from "./project-switcher";
 
 export async function Header() {
 	//permissoes do usuario
@@ -22,7 +23,12 @@ export async function Header() {
 
 				<OrganizationSwitcher />
 
-				{permissions?.can("get", "Project") && <p>Projects</p>}
+				{permissions?.can("get", "Project") && (
+					<>
+						<Slash className="size-3 -rotate-[24deg] text-border" />
+						<ProjectSwitcher />
+					</>
+				)}
 			</div>
 
 			<div className="flex items-center gap-4">
