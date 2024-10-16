@@ -11,12 +11,6 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 } from "./ui/dropdown-menu";
-import { Avatar, AvatarFallback } from "./ui/avatar";
-import Link from "next/link";
-import { useParams } from "next/navigation";
-
-import { getProjects } from "@/http/get-projects";
-import { useQuery } from "@tanstack/react-query";
 
 export function ProjectSwitcher() {
 	const { slug: orgSlug } = useParams<{
