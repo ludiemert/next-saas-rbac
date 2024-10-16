@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-
 import "./globals.css";
-
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
 	title: "Project next-saas-rbac App",
-	description: "Project Trip - FullStack",
+	description: "Project - FullStack",
 };
 
 export default function RootLayout({

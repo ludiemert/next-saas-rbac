@@ -2,10 +2,11 @@
 
 import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
-import { type VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
-import { SheetOverlay, SheetPortal, sheetVariants } from "./ui/sheet";
+
 import { cn } from "@/lib/utils";
+import { SheetOverlay, SheetPortal, sheetVariants } from "./ui/sheet";
+import type { VariantProps } from "class-variance-authority";
 import { useRouter } from "next/navigation";
 
 interface InterceptedSheetContentProps
@@ -17,9 +18,7 @@ export const InterceptedSheetContent = React.forwardRef<
 	InterceptedSheetContentProps
 >(({ side = "right", className, children, ...props }, ref) => {
 	const router = useRouter();
-
 	function onDismiss() {
-		//console.log('consult error')
 		router.back();
 	}
 
@@ -28,8 +27,8 @@ export const InterceptedSheetContent = React.forwardRef<
 			<SheetOverlay />
 			<SheetPrimitive.Content
 				ref={ref}
-				onEscapeKeyDown={onDismiss} //se user der "esc" volta pag anterior
-				onPointerDownOutside={onDismiss} //se usuario der click fora do modal tb volta a pag anterior
+				onEscapeKeyDown={onDismiss} //esc pag anterior
+				onPointerDownOutside={onDismiss} //esc pag anterior
 				className={cn(sheetVariants({ side }), className)}
 				{...props}
 			>

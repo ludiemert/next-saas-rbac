@@ -19,7 +19,7 @@ const OrganizationSchema = z
 					return true;
 				},
 				{
-					message: "Please, enter a valid domain....",
+					message: "Please, enter a valid domain.",
 				},
 			),
 		shouldAttachUsersByDomain: z
@@ -35,7 +35,7 @@ const OrganizationSchema = z
 			return true;
 		},
 		{
-			message: "Domain is reaquired when auto-join is enabled...",
+			message: "Domain is required when auto-join is enabled.",
 			path: ["domain"],
 		},
 	);
@@ -59,7 +59,7 @@ export async function createOrganizationAction(data: FormData) {
 
 		// Retorna sucesso ao final da operação bem-sucedida
 		return {
-			success: true, // Aqui indicamos que o cadastro foi um sucesso
+			success: true,
 			message: "Account created successfully!",
 			errors: null,
 			error: null,
@@ -74,15 +74,9 @@ export async function createOrganizationAction(data: FormData) {
 
 		return {
 			success: false,
-			message: "Unexpected error, try again in a few minutes....",
+			message: "Unexpected error, try again in a few minutes.",
 			errors: null,
 			error: null,
 		};
 	}
-
-	return {
-		success: true,
-		message: "Successfully save the organization.",
-		errors: null,
-	};
 }
