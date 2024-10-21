@@ -6,7 +6,7 @@ interface createOrganizationRequest {
 	shouldAttachUsersByDomain: boolean;
 }
 
-type createOrganizationResponse = void;
+//type createOrganizationResponse = void;
 
 export async function createOrganization({
 	name,

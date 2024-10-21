@@ -1,19 +1,17 @@
+"use client"; // Esta linha faz com que o código seja executado no cliente
+
 import { z } from "zod";
 import { HTTPError } from "ky";
-import { createProject } from "@/http/create-project";
-//import { getCurrentOrg } from "@/auth/auth";
+import { createProject } from "@/http/create-project"; // Mantendo o import correto
 
+// Esquema de validação Zod para os dados do projeto
+const ProjectSchema = z.object({
+	name: z.string().min(4, { message: "Please include at least 4 characters." }),
+	description: z.string(),
+});
 
-const ProjectSchema = z
-	.object({
-		name: z
-			.string()
-			.min(4, { message: "Please include at least 4 characters." }),
-		description: z.string()
-
-  })
-
-export async function createProjectAction(data: FormData) {
+export async function createProjectAction(data: FormData, org: string | null) {
+	// Validação dos dados
 	const result = ProjectSchema.safeParse(Object.fromEntries(data));
 
 	if (!result.success) {
@@ -23,24 +21,31 @@ export async function createProjectAction(data: FormData) {
 
 	const { name, description } = result.data;
 
-	try {
-  	await createProject({
-      org: getCurrentOrg()!, //esta dando um erro qdo carrego a pag apos o import //import { getCurrentOrg } from "@/auth/auth";
+	// Verificar se a organização foi passada
+	if (!org) {
+		return {
+			success: false,
+			message: "Organization not found.",
+			errors: null,
+			error: "Missing organization.",
+		};
+	}
 
+	try {
+		// Enviar a requisição de criação de projeto
+		await createProject({
+			org,
 			name,
-			description
-	
-		}); 
-  
- 
+			description,
+		});
 	} catch (err) {
+		// Tratar erros HTTP
 		if (err instanceof HTTPError) {
 			const { message } = await err.response.json();
 			return { success: false, message, errors: null, error: null };
 		}
 
 		console.error(err);
-
 		return {
 			success: false,
 			message: "Unexpected error, try again in a few minutes.",
@@ -49,11 +54,11 @@ export async function createProjectAction(data: FormData) {
 		};
 	}
 
-   // Retorna sucesso ao final da operação bem-sucedida
-   return {
-    success: true,
-    message: "Account created successfully!",
-    errors: null,
-    error: null,
-  };
+	// Retornar sucesso ao final da operação
+	return {
+		success: true,
+		message: "Project created successfully!",
+		errors: null,
+		error: null,
+	};
 }
