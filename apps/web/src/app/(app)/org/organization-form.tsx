@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useFormState } from "@/hooks/use-form-state";
 //import { useRouter } from "next/navigation";
 
-import { createOrganizationAction } from "./actions";
+import { createOrganizationAction } from "../create-organization/actions";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { AlertTriangle, Loader2 } from "lucide-react";
 
