@@ -1,20 +1,22 @@
 import { api } from "./api-client";
 
-interface CreateOrganizationRequest {
+interface UpdateOrganizationRequest {
 	__typename: 'Organization',  // Adicionado manualmente
+  org: string
 	name: string;
 	domain: string | null;
 	shouldAttachUsersByDomain: boolean;
 }
 
-type CreateOrganizationResponse = void;
+type UpdateOrganizationResponse = void;
 
-export async function createOrganization({
+export async function updateOrganization({
+  org,
 	name,
 	domain,
 	shouldAttachUsersByDomain,
-}: CreateOrganizationRequest): Promise<CreateOrganizationResponse> {
-	await api.post("organizations", {
+}: UpdateOrganizationRequest): Promise<UpdateOrganizationResponse> {
+	await api.put(`organizations/${org}`, {
 		json: {
 			name,
 			domain,

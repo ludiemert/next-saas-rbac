@@ -6,13 +6,13 @@ interface SignUpRequest {
 	password: string;
 }
 
-//type SignUpResponse = void
+type SignUpResponse = void
 
 export async function SignUp({
 	name,
 	email,
 	password,
-}: SignUpRequest): Promise<void> {
+}: SignUpRequest): Promise<SignUpResponse> {
 	await api.post("users", {
 		json: {
 			name,
