@@ -9,16 +9,18 @@ import {
 import { OrganizationForm } from "../../organization-form";
 import { ShutdownOrganizationButton } from "./shutdown-organization-button";
 import { getOrganization } from "@/http/get-organization";
+import { Billing } from "./billing";
 
 export default async function Settings() {
-	const currentOrg = getCurrentOrg()
+	const currentOrg = getCurrentOrg();
 	const permissions = await ability();
 
 	const canUpdateOrganization = permissions?.can("update", "Organization");
 	const canGetBilling = permissions?.can("get", "Billing");
 	const canShutdownOrganization = permissions?.can("delete", "Organization");
 
-	const { organization } = await getOrganization(currentOrg!)
+	// biome-ignore lint/style/noNonNullAssertion: <explanation>
+	const { organization } = await getOrganization(currentOrg!);
 
 	return (
 		<div className="space-y-4">
@@ -34,22 +36,23 @@ export default async function Settings() {
 							</CardDescription>
 						</CardHeader>
 						<CardContent>
-						<OrganizationForm isUpdating initialData={{
-        __typename: 'Organization',  // Adicionado manualmente
-        id: organization?.id || '',
-        ownerId: organization?.ownerId || '',
-        name: organization?.name || '',
-        domain: organization?.domain || '',
-        shouldAttachUsersByDomain: organization?.shouldAttachUsersByDomain || false
-    }}
-/>
-
-
+							<OrganizationForm
+								isUpdating
+								initialData={{
+									__typename: "Organization", // Adicionado manualmente
+									id: organization?.id || "",
+									ownerId: organization?.ownerId || "",
+									name: organization?.name || "",
+									domain: organization?.domain || "",
+									shouldAttachUsersByDomain:
+										organization?.shouldAttachUsersByDomain || false,
+								}}
+							/>
 						</CardContent>
 					</Card>
 				)}
 
-				{canGetBilling && <div>billing....</div>}
+				{canGetBilling && <Billing />}
 
 				{canShutdownOrganization && (
 					<Card>

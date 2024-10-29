@@ -1,17 +1,18 @@
 import { api } from "./api-client";
 
 interface UpdateOrganizationRequest {
-	__typename: 'Organization',  // Adicionado manualmente
-  org: string
+	__typename: "Organization"; // Adicionado manualmente
+	org: string;
 	name: string;
 	domain: string | null;
 	shouldAttachUsersByDomain: boolean;
 }
 
+// biome-ignore lint/suspicious/noConfusingVoidType: <explanation>
 type UpdateOrganizationResponse = void;
 
 export async function updateOrganization({
-  org,
+	org,
 	name,
 	domain,
 	shouldAttachUsersByDomain,

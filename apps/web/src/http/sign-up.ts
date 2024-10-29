@@ -6,7 +6,8 @@ interface SignUpRequest {
 	password: string;
 }
 
-type SignUpResponse = void
+// biome-ignore lint/suspicious/noConfusingVoidType: <explanation>
+type SignUpResponse = void;
 
 export async function SignUp({
 	name,

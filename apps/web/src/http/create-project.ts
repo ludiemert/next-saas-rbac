@@ -6,6 +6,7 @@ interface CreateProjectRequest {
 	description: string;
 }
 
+// biome-ignore lint/suspicious/noConfusingVoidType: <explanation>
 type CreateProjectResponse = void;
 
 export async function createProject({
