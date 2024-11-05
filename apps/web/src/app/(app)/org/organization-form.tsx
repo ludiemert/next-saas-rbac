@@ -7,22 +7,29 @@ import { Label } from "@/components/ui/label";
 import { useFormState } from "@/hooks/use-form-state";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { AlertTriangle, Loader2 } from "lucide-react";
-import { createOrganizationAction, updateOrganizationAction, type organizationSchema } from "./actions";
+
+// Importe o tipo corretamente
+import {
+	createOrganizationAction,
+	updateOrganizationAction,
+	type OrganizationSchemaType,
+} from "./actions";
 
 interface OrganizationFormProps {
 	isUpdating?: boolean;
-	initialData?: organizationSchema;
+	initialData?: OrganizationSchemaType; // Atualizado para usar o tipo correto
 }
 
 export function OrganizationForm({
 	isUpdating = false,
 	initialData,
 }: OrganizationFormProps) {
-	const formAction = isUpdating ? updateOrganizationAction : createOrganizationAction;
+	const formAction = isUpdating
+		? updateOrganizationAction
+		: createOrganizationAction;
 
-	const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
-		formAction,
-	);
+	const [{ success, message, errors }, handleSubmit, isPending] =
+		useFormState(formAction);
 
 	return (
 		<form onSubmit={handleSubmit} className="space-y-4">
@@ -48,7 +55,7 @@ export function OrganizationForm({
 
 			<div className="space-y-1">
 				<Label htmlFor="name">Organization name</Label>
-				<Input name="name" id="name" defaultValue={initialData?.name || ''} />
+				<Input name="name" id="name" defaultValue={initialData?.name || ""} />
 				{errors?.name && (
 					<p className="text-xs font-medium text-red-600 dark:text-red-500">
 						{errors.name[0]}
@@ -64,7 +71,7 @@ export function OrganizationForm({
 					id="domain"
 					inputMode="url"
 					placeholder="example.com"
-					defaultValue={initialData?.domain || ''}
+					defaultValue={initialData?.domain || ""}
 				/>
 				{errors?.domain && (
 					<p className="text-xs font-medium text-red-600 dark:text-red-500">
@@ -87,8 +94,8 @@ export function OrganizationForm({
 							Auto-join new members
 						</span>
 						<p className="text-sm text-muted-foreground">
-							This will automatically invite all members with the same e-mail domain
-							to this organization.
+							This will automatically invite all members with the same e-mail
+							domain to this organization.
 						</p>
 					</label>
 				</div>

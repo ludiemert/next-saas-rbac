@@ -81,20 +81,20 @@ export async function MemberList() {
 											<UpdateMemberRoleSelect
 												memberId={member.id}
 												value={member.role}
-												disabled={
+												/* 	disabled={
 													member.userId === membership.userId ||
 													member.userId === organization.ownerId ||
 													permissions?.cannot("update", "User")
-												}
+												} */
 											/>
 
 											{permissions?.can("delete", "User") && (
 												<form action={removeMemberAction.bind(null, member.id)}>
 													<Button
-														disabled={
+														/*	disabled={
 															member.userId === membership.userId ||
 															member.userId === organization.ownerId
-														}
+														} */
 														type="submit"
 														size="sm"
 														variant="destructive"

@@ -2,6 +2,7 @@
 
 import { getCurrentOrg } from "@/auth/auth";
 import { removeMember } from "@/http/remove-member";
+import { revokeInvite } from "@/http/revoke-invite";
 import { updateMember } from "@/http/update-member";
 import type { Role } from "@saas/auth";
 import { revalidateTag } from "next/cache";
@@ -29,4 +30,16 @@ export async function updateMemberAction(memberId: string, role: Role) {
 	});
 
 	revalidateTag(`${currentOrg}/members`);
+}
+
+export async function revokeInviteAction(inviteId: string) {
+	const currentOrg = getCurrentOrg();
+
+	await revokeInvite({
+		// biome-ignore lint/style/noNonNullAssertion: <explanation>
+		org: currentOrg!,
+		inviteId,
+	});
+
+	revalidateTag(`${currentOrg}/invites`);
 }

@@ -47,6 +47,7 @@ const organizationSchema = z
 	);
 
 export type OrganizationSchemaType = z.infer<typeof organizationSchema>;
+export { organizationSchema };
 
 export async function createOrganizationAction(data: FormData) {
 	const result = organizationSchema.safeParse(Object.fromEntries(data));
@@ -106,7 +107,7 @@ export async function updateOrganizationAction(data: FormData) {
 		await updateOrganization({
 			__typename: "Organization", // Adicionado manualmente
 			// biome-ignore lint/style/noNonNullAssertion: <explanation>
-			org: currentOrg!,
+			org: currentOrg!, // Adicionando a confirmação de que `currentOrg` não é nulo
 			name,
 			domain,
 			shouldAttachUsersByDomain,
@@ -116,7 +117,7 @@ export async function updateOrganizationAction(data: FormData) {
 
 		return {
 			success: true,
-			message: "Account created successfully!",
+			message: "Organization updated successfully!",
 			errors: null,
 			error: null,
 		};
