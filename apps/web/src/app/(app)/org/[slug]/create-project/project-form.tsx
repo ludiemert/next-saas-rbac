@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,10 +9,10 @@ import { AlertTriangle, Loader2 } from "lucide-react";
 import { createProjectAction } from "./actions";
 import { Textarea } from "@/components/ui/textarea";
 import { useParams } from "next/navigation";
-import { queryClient } from "@/lib/react-query";
 
 export function ProjectForm() {
 	const { slug: org } = useParams<{ slug: string }>();
+
 	const [{ success, message, errors }, handleSubmit, isPending] = useFormState(
 		async (formData) => {
 			// Passa a organização ao enviar o formulário

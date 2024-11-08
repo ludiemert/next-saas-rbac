@@ -4,6 +4,7 @@ import { getInvites } from "@/http/get-invites";
 
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { RevokeInviteButton } from "./revoke-invite-button";
+import { CreateInviteForm } from "./create-invite-form";
 
 export async function Invites() {
 	const currentOrg = getCurrentOrg();
@@ -19,7 +20,9 @@ export async function Invites() {
 					<CardHeader>
 						<CardTitle>Invite member</CardTitle>
 					</CardHeader>
-					<CardContent>test</CardContent>
+					<CardContent>
+						<CreateInviteForm />
+					</CardContent>
 				</Card>
 			)}
 
