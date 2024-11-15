@@ -1,24 +1,25 @@
-//rota que tras o detalhes da membership
+// rota que tras o detalhes da membership
 
-import type { Role } from "@saas/auth";
-import { api } from "./api-client";
+import type { Role } from '@saas/auth'
+
+import { api } from './api-client'
 
 interface GetMembershipResponse {
-	membership: {
-		id: string;
-		//	role: "ADMIN" | "MEMBER" | "BILLING";
-		role: Role;
-		organizationId: string;
-		userId: string;
-	};
+  membership: {
+    id: string
+    //	role: "ADMIN" | "MEMBER" | "BILLING";
+    role: Role
+    organizationId: string
+    userId: string
+  }
 }
 
 export async function getMembership(org: string) {
-	const result = await api
-		.get(`organizations/${org}/membership`)
-		.json<GetMembershipResponse>();
+  const result = await api
+    .get(`organizations/${org}/membership`)
+    .json<GetMembershipResponse>()
 
-	// console.log('result', result)
+  // console.log('result', result)
 
-	return result;
+  return result
 }

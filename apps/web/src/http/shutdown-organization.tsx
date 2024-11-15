@@ -1,11 +1,11 @@
-import { api } from "./api-client";
+import { api } from './api-client'
 
 interface ShutdownOrganizationRequest {
-	org: string;
+  org: string
 }
 
 export async function shutdownOrganization({
-	org,
+  org,
 }: ShutdownOrganizationRequest) {
-	await api.delete(`organizations/${org}`);
+  await api.delete(`organizations/${org}`)
 }

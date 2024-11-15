@@ -1,5 +1,6 @@
-import { z } from 'zod'
 import { HTTPError } from 'ky'
+import { z } from 'zod'
+
 import { SignUp } from '@/http/sign-up'
 
 const signUpSchema = z

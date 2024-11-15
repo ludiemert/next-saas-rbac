@@ -1,21 +1,23 @@
-"use client";
+'use client'
 
-import { QueryClientProvider } from "@tanstack/react-query";
-import type { ReactNode } from "react";
-import { ThemeProvider } from "next-themes";
-import "./globals.css";
-import { queryClient } from "@/lib/react-query";
+import './globals.css'
+
+import { QueryClientProvider } from '@tanstack/react-query'
+import { ThemeProvider } from 'next-themes'
+import type { ReactNode } from 'react'
+
+import { queryClient } from '@/lib/react-query'
 
 export function Providers({ children }: { children: ReactNode }) {
-	return (
-		<QueryClientProvider client={queryClient}>
-			<ThemeProvider
-				attribute="class"
-				defaultTheme="dark"
-				disableTransitionOnChange
-			>
-				{children}
-			</ThemeProvider>
-		</QueryClientProvider>
-	);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="dark"
+        disableTransitionOnChange
+      >
+        {children}
+      </ThemeProvider>
+    </QueryClientProvider>
+  )
 }

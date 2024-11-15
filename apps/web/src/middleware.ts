@@ -1,30 +1,30 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest, NextResponse } from 'next/server'
 
 export function middleware(request: NextRequest) {
-	const { pathname } = request.nextUrl;
+  const { pathname } = request.nextUrl
 
-	const response = NextResponse.next();
+  const response = NextResponse.next()
 
-	if (pathname.startsWith("/org")) {
-		const [, , slug] = pathname.split("/");
+  if (pathname.startsWith('/org')) {
+    const [, , slug] = pathname.split('/')
 
-		response.cookies.set("org", slug);
-	} else {
-		response.cookies.delete("org");
-	}
+    response.cookies.set('org', slug)
+  } else {
+    response.cookies.delete('org')
+  }
 
-	return response;
+  return response
 }
 
 export const config = {
-	matcher: [
-		/*
-		 * Match all request paths except for the ones starting with:
-		 * - api (API routes)
-		 * - _next/static (static files)
-		 * - _next/image (image optimization files)
-		 * - favicon.ico, sitemap.xml, robots.txt (metadata files)
-		 */
-		"/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
-	],
-};
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+  ],
+}
