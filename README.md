@@ -237,6 +237,210 @@ Contributions are welcome! 💡
 
 ________________________
 
+#### Portugues🥰
+# 🚀 Projeto Fullstack - Software como Serviço (SaaS)
+
+Estou desenvolvendo uma aplicação SaaS completa usando as tecnologias mais recentes do ecossistema JavaScript. Do conceito à implementação, este software multi-tenant permite que várias empresas usem a mesma aplicação de forma segura e eficiente.
+
+🌟 Este projeto foi desenvolvido durante o curso da **Rocketseat** 🚀, com foco em organização e gerenciamento de projetos. Ao combinar **Next.js**, **Fastify**, **PostgreSQL**, **Prisma** e **TypeScript**, criei uma solução robusta e moderna que revoluciona a forma como as equipes colaboram. Um diferencial importante é a implementação de **Controle de Acesso Baseado em Função (RBAC)**, garantindo que cada usuário tenha as permissões apropriadas para suas atividades.
+
+---
+
+### Img - Back_end
+
+<div align="center">
+    <table>
+        <tr>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/back/01 - schema.prisma - and-conection_Progress.png" style="width: 90%;" alt="01 - schema.prisma - and-conection_Progress">
+                <p style="margin-top: 5px;">Schema.prisma - and-conection_Progress</p>
+            </td>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/back/06 - Prisma Studio create users.png" style="width: 90%;" alt="06 - Prisma Studio create users.png">
+                <p style="margin-top: 5px;"> Prisma Studio create users</p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+  <br/>
+  <br/>
+
+  <div align="center">
+    <table>
+        <tr>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/back/05 - Prisma Studio - tables BD.png" style="width: 90%;" alt="05 - Prisma Studio - tables BD">
+                <p style="margin-top: 5px;">Prisma Studio - tables BD</p>
+            </td>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/back/7 - Table_Fake.png" style="width: 90%;" alt="7 - Table_Fake">
+                <p style="margin-top: 5px;">Table_Fake</p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+  <br/>
+  <br/>
+
+  ---
+
+### Img - Front_end
+
+<div align="center">
+    <table>
+        <tr>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/front/1 - conexao front com back teste - resp back end.png" style="width: 90%;" alt="1 - conexao front com back teste - resp back end">
+                <p style="margin-top: 5px;">Conexao front com back teste - resp back end</p>
+            </td>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/front/10 - criate_web_organization_user_fazparte.png" style="width: 90%;" alt="criate_web_organization_user_fazparte">
+                <p style="margin-top: 5px;"> Criate_web_organization_user</p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+  <br/>
+  <br/>
+
+  <div align="center">
+    <table>
+        <tr>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/front/14 - page_organizations_shutdown.png" style="width: 90%;" alt="Page_organizations_shutdown">
+                <p style="margin-top: 5px;">Page_organizations_shutdown</p>
+            </td>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/front/2 - conexao front com back teste - resp front.png" style="width: 90%;" alt="2 - conexao front com back teste - resp front">
+                <p style="margin-top: 5px;">Conexao front com back teste - resp front</p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+  <br/>
+  <br/>
+
+  ---
+
+### Img - Deploy
+
+<div align="center">
+    <table>
+        <tr>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/deploy/1_1_neon_deploy_BD.png" style="width: 90%;" alt="1_1_neon_deploy_BD">
+                <p style="margin-top: 5px;">Neon_deploy_BD.png</p>
+            </td>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/deploy/1_2_build_proj_back_end.png" style="width: 90%;" alt="1_2_build_proj_back_end">
+                <p style="margin-top: 5px;"> Build_proj_back_end</p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+  <br/>
+  <br/>
+
+  <div align="center">
+    <table>
+        <tr>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/deploy/2_1_2_Deploy_render_func_back_end.png" style="width: 90%;" alt="2_1_2_Deploy_render_func_back_end">
+                <p style="margin-top: 5px;">Deploy_render_func_back_end</p>
+            </td>
+            <td style="width: 50%; text-align: center;">
+                <img src="Img_next-saas-rbac/deploy/2_1_Deploy_render_func_back_end.png" style="width: 90%;" alt="Deploy_render_func_back_end.png">
+                <p style="margin-top: 5px;">Deploy_render_func_back_end</p>
+            </td>
+        </tr>
+    </table>
+</div>
+
+  <br/>
+  <br/>
+  
+ 
+---
+
+## 🛠️ Funcionalidades Principais
+
+- Organização eficiente de projetos para gerenciamento claro e eficaz.
+- Controle total sobre os membros da equipe e seus papéis específicos.
+- Melhoria da experiência do usuário para operações ágeis e sem falhas.
+- Implementação robusta de **RBAC**, melhorando a segurança no controle de acesso.
+
+---
+
+## 🧐 O que é SaaS?
+
+**Software como Serviço (SaaS)** é um modelo de distribuição de software onde as aplicações são hospedadas na nuvem e acessadas via internet. Os usuários não precisam instalar ou manter o software em seus dispositivos, pois tudo é gerenciado pelo provedor.
+
+---
+
+## 🏢 Arquitetura Multi-Tenant
+
+A arquitetura **multi-tenant** permite que múltiplos clientes compartilhem a mesma instância de software, mantendo dados e configurações isolados. Isso garante:
+
+- **Eficiência** no uso de recursos.
+- **Segurança** entre os dados dos clientes.
+
+---
+
+## 🚨 Estratégias de Permissões
+
+Adotei estratégias de **Controle de Acesso Baseado em Função (RBAC)**, permitindo:
+
+- Definição de permissões específicas para cada função.
+- Gerenciamento eficiente de acessos dentro da aplicação.
+- Fortalecimento da segurança com controle granular sobre as atividades.
+
+---
+
+## 💻 Tecnologias Usadas
+
+### Backend
+
+- **Node.js** com **Fastify**: API rápida e eficiente.
+- **Prisma**: ORM para modelagem e manipulação de banco de dados.
+- **PostgreSQL**: Banco de dados relacional robusto.
+
+### Frontend
+
+- **Next.js**: Framework React para SSR (Server-Side Rendering) e SSG (Static Site Generation).
+- **TypeScript**: Tipagem estática para maior confiabilidade e escalabilidade.
+
+### Monorepo
+
+- **Turbo Repo**: Ferramenta para gerenciar monorepos e otimizar projetos com múltiplos pacotes.
+
+---
+
+## 🔥 Aprendizados
+
+Ao desenvolver este projeto, você obterá insights sobre:
+
+- Fundamentos de SaaS e arquitetura multi-tenant.
+- Estratégias de permissões usando RBAC.
+- Desenvolvimento Fullstack com Node.js e Next.js.
+- Organização de projetos com Turbo Repo.
+
+---
+
+## 🚀 Como Rodar o Projeto
+
+1. **Clone o repositório**:
+   ```bash
+   git clone https:/github.com/ludiemert/next-saas-rbac.git
+    ```
+
+_________
+
+
 ## License
 - This project is licensed under the MIT License.
 ---
